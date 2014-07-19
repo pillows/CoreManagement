@@ -8,9 +8,9 @@
                     <h3><i class="glyphicon glyphicon-briefcase"></i> Toolbox</h3>
                     <hr>
                     <ul class="nav nav-stacked">
-                        <li><a href="javascript:;"><i class="glyphicon glyphicon-wrench"></i> Settings</a></li>
-                        <li><a href="javascript:;"><i class="glyphicon glyphicon-th"></i> Dashboard</a></li>
-                        <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Add a project</a></li>
+                        <li><a href="/settings/"><i class="glyphicon glyphicon-wrench"></i> Settings</a></li>
+                        <li><a href="/"><i class="glyphicon glyphicon-th"></i> Dashboard</a></li>
+                        <li><a href="/add/"><i class="glyphicon glyphicon-list-alt"></i> Add a project</a></li>
                     </ul>
                     <hr>
                 </div>
@@ -23,15 +23,16 @@
                         <!-- center left-->	
                         <div class="col-md-7">
                             {% for job in projects %}
+                            
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4><a href="/project/{{ job['_id']}}">{{ job['name'] }}</a></h4>
+                                    <h4><a href="/project/{{ job['_id']}}">{{ job['name'] }} - $ {{ job['price'] }}</a></h4>
                                 </div>
                                 <div class="panel-body">
                                     <small>Current Job Status</small>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ len(job['features_completes'])/len(job['features'])  }}" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                            {{ len(job['features_completes'])/len(job['features'])  }}%
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ ((job['features_completed'] | length)/ (job['features'] | length))  | int }}" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                            {{ ((job['features_completed'] | length) / (job['features'] | length)) | int  }}%
                                         </div>
                                     </div>
                                 </div>

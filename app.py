@@ -25,6 +25,10 @@ def index():
     else:
         return redirect("/dashboard/")
 
+@app.route("/logout/")
+def logout():
+    session.pop("login")
+    return redirect("/")
 
 
 if __name__ == "__main__":

@@ -8,9 +8,9 @@
         <h3><i class="glyphicon glyphicon-briefcase"></i> Toolbox</h3>
         <hr>
         <ul class="nav nav-stacked">
-            <li><a href="javascript:;"><i class="glyphicon glyphicon-wrench"></i> Settings</a></li>
-            <li><a href="javascript:;"><i class="glyphicon glyphicon-th"></i> Dashboard</a></li>
-            <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Add a project</a></li>
+            <li><a href="/settings/"><i class="glyphicon glyphicon-wrench"></i> Settings</a></li>
+            <li><a href="/"><i class="glyphicon glyphicon-th"></i> Dashboard</a></li>
+            <li><a href="/add/"><i class="glyphicon glyphicon-list-alt"></i> Add a project</a></li>
         </ul>
         <hr>
     </div>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="panel-body" method="post">
-                        <form class="form form-vertical">
+                        <form method="POST" class="form form-vertical">
                             <div class="control-group">
                                 <label>Name</label>
                                 <div class="controls">
@@ -54,7 +54,7 @@
                                             </ul>
                                         </div>
                                         <!-- /btn-group -->
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="budget">
                                     </div>
                                 </div>
                                 <div class="control-group">

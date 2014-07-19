@@ -10,7 +10,7 @@ def func():
     
     if request.method == "POST":
         email = request.form['email']
-        username = request.form['username']
+        username = request.form['username'].lower()
         password = utils.protect(request.form['password'])
         if not utils.db.members.find_one({"username":username}):
             utils.db.members.insert({"username":username, "password":password, "email":email})

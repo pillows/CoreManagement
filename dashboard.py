@@ -10,6 +10,6 @@ def func():
     if request.method == "POST":
         pass
     
-    projects = utils.db.project.find({"username":session['login']})
-    data = {"projects":projects}
-    return render_template("dashboard.html", data=data,session=session)
+    projects = utils.db.projects.find({"username":session['login'], "completed":False})
+
+    return render_template("dashboard.html", projects=projects)

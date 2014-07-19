@@ -2,6 +2,7 @@ import hashlib
 import pymongo
 
 db = pymongo.MongoClient("localhost", 27017).coremanagement
+url = "http://localhost:5000"
 
 def protect(string):
     seed = "ASDkk;12lk3kl1;23kl;;alsdkdslfk;dskjfjksDFKJjkljklJKjklJJjkKLJskajdjkjk34239i493i29((#()@01023102939)()(@09133920"

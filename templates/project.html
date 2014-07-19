@@ -2,17 +2,20 @@
 {% block content %}
         <div class="container">
         <div class="row">
+            {% if "login" in session %}
             <div class="col-sm-3">
                 <!-- left -->
                 <h3><i class="glyphicon glyphicon-briefcase"></i> Toolbox</h3>
                 <hr>
-                <ul class="nav nav-stacked">
-                    <li><a href="javascript:;"><i class="glyphicon glyphicon-wrench"></i> Settings</a></li>
-                    <li><a href="javascript:;"><i class="glyphicon glyphicon-th"></i> Dashboard</a></li>
-                    <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Add a project</a></li>
+                                <ul class="nav nav-stacked">
+                    <li><a href="/settings/"><i class="glyphicon glyphicon-wrench"></i> Settings</a></li>
+                    <li><a href="/"><i class="glyphicon glyphicon-th"></i> Dashboard</a></li>
+                    <li><a href="/add/"><i class="glyphicon glyphicon-list-alt"></i> Add a project</a></li>
                 </ul>
+    
                 <hr>
             </div>
+            {% endif %}
             <!-- /span-3 -->
             <div class="col-sm-9">
                 <!-- column 2 -->	
@@ -21,41 +24,71 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><a href="/#">Job #1 - Blah Blah</a></h4>
+                            <h4><a href="/project/{{ job['_id'] }}">{{ job['name'] }} - ${{job['price'] }}</a></h4>
                         </div>
                         <div class="panel-body">
                             <small>Current Job Status</small>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-                                    50%
-                                </div>
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{ ((job['features_completed'] | length)/ job['amount_of_features']) | int}}" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                                {{ ((job['features_completed'] | length)/ job['amount_of_features'])  | int }}%
+                            </div>
                             </div>
                             <div class="features">
-                                <div class="title">Features:</div>
+                                <div class="title">Pending Features:</div>
                                 <ul class="list-unstyled">
-                                    <li><input type="checkbox" disabled checked> <label class="control-label text-muted"> Login</label></li>
-                                    <li><input type="checkbox"> <label class="control-label"> Register</label></li>
-                                </ul>
+                                    
+                                    {% for feature in job['features'] %}
+                                    {% if "login" in session and session['login'] == job['username']%}
+            
+                                    <form method="POST">
+                                    <li><input type="checkbox" name="feature" value="{{feature}}"> <label class="control-label">{{ feature }}</label> <input type="submit" value="Completed"></li>
+                                    
+                                    </form>
+                                
+                                
+
+                                    {% else %}
+                    
+                                    <li><label class="control-label">{{ feature }}</label></li>
+
+                                    {% endif %}
+
+                                    {% endfor %}
+                                    </ul>
                             </div>
+                            <div class="features">
+                            <div class="title">Completed Features:</div>
+                                <ul class="list-unstyled">
+                                    
+                                    {% for feature in job['features_completed'] %}
+                                    
+                    
+                                    <li><label class="control-label">{{ feature }}</label></li>
+
+                                    
+                                    {% endfor %}
+                                    </ul>
+                            </div>  
                             <div class="discussion">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-flash"></i> <small>(3 mins ago)</small> The 3rd page reports don't contain any links. Does anyone know why..</a></li>
-                                    <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-flash"></i> <small>(1 hour ago)</small> Hi all, I've just post a report that show the relationship betwe..</a></li>
-                                    <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-heart"></i> <small>(2 hrs ago)</small> Paul. That document you posted yesterday doesn't seem to contain the over..</a></li>
-                                    <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-heart-empty"></i> <small>(4 hrs ago)</small> The map service on c243 is down today. I will be fixing the..</a></li>
-                                    <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-heart"></i> <small>(yesterday)</small> I posted a new document that shows how to install the services layer..</a></li>
-                                    <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-flash"></i> <small>(yesterday)</small> ..</a></li>
+                                    {% for message in messages %}
+                                    <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-flash"></i> <small>( {{ message['timeago']  }} ago)</small> {{ message['message'] }}</a></li>
+   
+                                    {% endfor %}
                                 </ul>
+                            
                             </div>
+                            {% if "login" in session and session['login'] == job['username']%}
                             <div class="col-sm-9">
-                                <form class="form-inline" role="form">
+                                <form method="POST" class="form-inline" role="form">
                                     <div class="form-group">
-                                        <label class="sr-only" for="exampleInputEmail2">Enter message to {{ other_person }}</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Send the developer a message.">
+                                        <label class="sr-only" for="exampleInputEmail2">Enter an update</label>
+                                        <input name="message" type="message" class="form-control" id="exampleInputEmail2" placeholder="Update the client.">
                                     </div>
                                     <button type="submit" class="btn btn-default">Send Message</button>
                                 </form>
                             </div>
+                            {% endif %}
                         </div>
                         <!--/panel-body-->
                     </div>
