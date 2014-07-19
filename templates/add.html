@@ -1,4 +1,92 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div class="container">
+<!-- upper section -->
+<div class="row">
+    <div class="col-sm-3">
+        <!-- left -->
+        <h3><i class="glyphicon glyphicon-briefcase"></i> Toolbox</h3>
+        <hr>
+        <ul class="nav nav-stacked">
+            <li><a href="javascript:;"><i class="glyphicon glyphicon-wrench"></i> Settings</a></li>
+            <li><a href="javascript:;"><i class="glyphicon glyphicon-th"></i> Dashboard</a></li>
+            <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Add a project</a></li>
+        </ul>
+        <hr>
+    </div>
+    <!-- /span-3 -->
+    <div class="col-sm-9">
+        <!-- column 2 -->	
+        <h3><i class="glyphicon glyphicon-dashboard"></i> Add a project</h3>
+        <hr>
+        <div class="row">
+            <!-- center left-->	
+            <div class="col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <i class="glyphicon glyphicon-wrench pull-right"></i>
+                            <h4>Post Request</h4>
+                        </div>
+                    </div>
+                    <div class="panel-body" method="post">
+                        <form class="form form-vertical">
+                            <div class="control-group">
+                                <label>Name</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" placeholder="Enter Name" name="name">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label>Date of Completion</label>
+                                <div class="controls">
+                                    <input type="date" class="form-control" placeholder="Date of Completion" name="date">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label>Budget</label>
+                                <div class="controls">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">$ <span class="caret"></span></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">&#8364;</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- /btn-group -->
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label>Features</label>
+                                    <div class="controls">
+                                        <textarea class="form-control" name="features" placeholder="Place each feature on a new line"></textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label></label>
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">
+                                        Post
+                                        </button>
+                                    </div>
+                                </div>
+                        </form>
+                        </div><!--/panel content-->
+                    </div>
+                    <!--/panel-->                   
+                </div>
+                <!--/col-->
+                <!--center-right-->
+                <!--/col-span-6-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/col-span-9-->
+    </div>
+    <!--/row-->
+    <!-- /upper section -->
+    <!-- lower section -->
+    <!--/row-->
+</div>
 {% endblock %}
