@@ -4,5 +4,5 @@ import utils
 add = Blueprint(__name__, "add")
 
 @add.route("/add/", methods=['GET', 'POST'])
-def project_add():
+def func():
     return render_template("add.html")
