@@ -4,6 +4,7 @@ from register import register
 from login import login
 from settings import settings
 from dashboard import dashboard
+from add import add
 
 app = Flask(__name__)
 app.secret_key = "ASD'l1l;23k123kk;laskd;askd;lakSD;;alsmmzxcmmadf;kas;DK;lkl;1;23k1;23k;SAd00123lal;sdk;SAKD;lk213123"
@@ -15,6 +16,7 @@ app.register_blueprint(login)
 app.register_blueprint(register)
 app.register_blueprint(settings)
 app.register_blueprint(project)
+app.register_blueprint(add)
 
 @app.route("/")
 def index():
