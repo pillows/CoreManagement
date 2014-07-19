@@ -1,40 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <title>Bootply.com - Bootstrap Bootstrap 3 Control Panel</title>
-        <meta name="generator" content="Bootply" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-    </head>
-    <body>
-        <!-- Header -->
-        <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-toggle"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">CoreManagement</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-                            <i class="glyphicon glyphicon-user"></i>{{ username }}<span class="caret"></span></a>
-                            <ul id="g-account-menu" class="dropdown-menu" role="menu">
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /Header -->
-        <!-- Main -->
+{% extends "base.html" %}
+{% block content %}
         <div class="container">
         <div class="row">
             <div class="col-sm-3">
@@ -86,7 +51,7 @@
                                 <form class="form-inline" role="form">
                                     <div class="form-group">
                                         <label class="sr-only" for="exampleInputEmail2">Enter message to {{ other_person }}</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Send the developer a message.">
                                     </div>
                                     <button type="submit" class="btn btn-default">Send Message</button>
                                 </form>
@@ -97,19 +62,4 @@
                 </div>
             </div>
         </div>
-        <!--/container-->
-        <!-- /Main -->
-        <!-- /.modal -->
-        <script type='text/javascript' src="js/jquery.min.js"></script>
-        <script type='text/javascript' src="js/bootstrap.min.js"></script>
-        <!-- JavaScript jQuery code from Bootply.com editor  -->
-        <script type='text/javascript'>
-            $(document).ready(function() {
-            
-                
-            
-            });
-            
-        </script>
-    </body>
-</html>
+{% endblock %}

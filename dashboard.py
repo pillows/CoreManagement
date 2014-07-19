@@ -12,4 +12,4 @@ def func():
     
     projects = utils.db.project.find({"username":session['login']})
     data = {"projects":projects}
-    return render_template("dashboard.html", data=data)
+    return render_template("dashboard.html", data=data,session=session)
