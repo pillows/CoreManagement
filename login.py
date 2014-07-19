@@ -8,7 +8,7 @@ def func():
     if "login" in session:
         return redirect("/")
     if request.method == "POST":
-        username = request.form['username']
+        username = request.form['username'].lower()
         password = utils.protect(request.form['password'])
         if utils.db.members.find_one({"username":username, "password":password}):
             session['login'] = username

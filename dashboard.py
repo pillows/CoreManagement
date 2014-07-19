@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, session, flash, request
+import utils
 
 dashboard = Blueprint(__name__, "dashboard")
 
@@ -9,6 +10,6 @@ def func():
     if request.method == "POST":
         pass
     
-    project = utils.db.project.find({"username":session['login']})
-    
+    projects = utils.db.project.find({"username":session['login']})
+    data = {"projects":projects}
     return render_template("dashboard.html", data=data)
